@@ -22,4 +22,10 @@ Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for info on how to get in
 
 ## License
 
-Madeleine is Open Source Software released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html).
+hl7-fhir-udap-common is Open Source Software released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html).
+
+## Original Contributors
+
+The hl7-fhir-udap-common was developed originally as a collaborative effort between [Evernorth](https://www.evernorth.com/) and [OKTA](https://www.okta.com/).  We would like to recognize the following people for their initial contributions to the project: 
+ - Tom Loomis - Evernorth
+ - Dan Cinnamon - OKTA
