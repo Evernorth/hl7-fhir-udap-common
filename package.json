@@ -1,0 +1,29 @@
+{
+  "name": "udap-common",
+  "version": "0.0.1",
+  "description": "UDAP functionality used by both udap-server-okta and udap-client",
+  "main": "udap-common.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomLoomis-Evernorth/udap-common.git"
+  },
+  "author": "Evernorth/Okta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TomLoomis-Evernorth/udap-common/issues"
+  },
+  "homepage": "https://github.com/TomLoomis-Evernorth/udap-common#readme",
+  "dependencies": {
+    "asn1js": "^3.0.5",
+    "axios": "^1.4.0",
+    "njwt": "^2.0.0",
+    "node-forge": "^1.3.1",
+    "pem-jwk": "^2.0.0",
+    "pkijs": "^3.0.15",
+    "pvutils": "^1.1.3",
+    "uuid": "^9.0.0"
+  }
+}
