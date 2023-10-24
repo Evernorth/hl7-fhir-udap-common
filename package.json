@@ -1,21 +1,21 @@
 {
   "name": "udap-common",
   "version": "0.0.1",
-  "description": "UDAP functionality used by both udap-server-okta and udap-client",
+  "description": "UDAP functionality used by both hl7-fhir-udap-server and hl7-fhir-udap-client",
   "main": "udap-common.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TomLoomis-Evernorth/udap-common.git"
+    "url": "git+https://github.com/Evernorth/hl7-fhir-udap-common.git"
   },
   "author": "Evernorth/Okta",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/TomLoomis-Evernorth/udap-common/issues"
+    "url": "https://github.com/Evernorth/hl7-fhir-udap-common"
   },
-  "homepage": "https://github.com/TomLoomis-Evernorth/udap-common#readme",
+  "homepage": "https://github.com/Evernorth/hl7-fhir-udap-common#readme",
   "dependencies": {
     "asn1js": "^3.0.5",
     "axios": "^1.4.0",

@@ -6,11 +6,11 @@ This is nodejs library that is part of a 4 repo collection for a full [UDAP](htt
 
 ## Usage
 
-You can see examples in both the server and client projects.  TODO: Provide links
+To see example code you can browse the [hl7-fhir-udap-client](https://github.com/Evernorth/hl7-fhir-udap-client#readme) and [hl7-fhir-udap-server](https://github.com/Evernorth/hl7-fhir-udap-server#readme) repositories.
 
 ## Installation
 
-NA for now.
+Currently the repositories are set up for local installation.  Placing all 4 repositories under the same parent folder will allow the package.json local file references to be resolved accurately.  Eventually this repository will be an npm package.
 
 ## Getting help
 
