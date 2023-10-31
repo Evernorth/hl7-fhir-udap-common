@@ -6,20 +6,26 @@ This nodejs library is part of a four-repository collection for a full [UDAP](ht
 - UDAP JSON web tokens (JWTs): Creating and verifying
 - Trust community certificates: Parsing for signing keys and Subject Alternative Name (SAN); validating certificate chains; checking the Certificate Revocation List (CRL); and checking for certificate expiration
 
+Links to the other repositories in the collection:
+- [hl7-fhir-udap-client](https://github.com/Evernorth/hl7-fhir-udap-client#readme)
+- [hl7-fhir-udap-test-client-ui](https://github.com/Evernorth/hl7-fhir-udap-test-client-ui#readme)
+- [hl7-fhir-udap-server](https://github.com/Evernorth/hl7-fhir-udap-server#readme)
+
+
 ## Public Methods
-- parsePKCS12(pkcs12Filename, password): Used to load a PKCS12 keystore for use in signing UDAP JWTs.
+- **parsePKCS12(pkcs12Filename, password)**: Used to load a PKCS12 keystore for use in signing UDAP JWTs.
 
-- parseTrustAnchorPEM(caTrustAnchorFilename): Used to specify which community CA your implementation will trust. Mainly used when validating a JWT.
+- **parseTrustAnchorPEM(caTrustAnchorFilename)**: Used to specify which community CA your implementation will trust. Mainly used when validating a JWT.
 
-- verifyUdapJwtCommon(udapJwtString, caTrustAnchorObject): Performs basic JWT validation and ensures that the JWT is signed with a certificate that belongs to the trusted community (as defined by the parseTrustAnchorPEM method).
+- **verifyUdapJwtCommon(udapJwtString, caTrustAnchorObject)**: Performs basic JWT validation and ensures that the JWT is signed with a certificate that belongs to the trusted community (as defined by the parseTrustAnchorPEM method).
 
-- generateUdapSignedJwt(jwtClaims, communityMemberCertAndPrivateKeyObject,signingAlg): Mints a new JWT with provided claims, and signs it using the private key loaded with the parsePKCS12 method.
+- **generateUdapSignedJwt(jwtClaims, communityMemberCertAndPrivateKeyObject,signingAlg)**: Mints a new JWT with provided claims, and signs it using the private key loaded with the parsePKCS12 method.
 
-- getAllSansFromCert(cert): Helper method to extract the list of subject alternative names from a certificate.
+- **getAllSansFromCert(cert)**: Helper method to extract the list of subject alternative names from a certificate.
 
-- getPublicKeyJWKS(udapJwtString): A helper method for obtaining a certificate in JWKS format, a common format used in OAuth2 flows.
+- **getPublicKeyJWKS(udapJwtString)**: A helper method for obtaining a certificate in JWKS format, a common format used in OAuth2 flows.
 
-- validateSanInCert(sanValue, cert): A helper method to determine if a given subject alternative name is present in a certificate.
+- **validateSanInCert(sanValue, cert)**: A helper method to determine if a given subject alternative name is present in a certificate.
 
 ## Usage
 
