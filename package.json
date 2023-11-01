@@ -1,6 +1,6 @@
 {
-  "name": "udap-common",
-  "version": "0.0.1",
+  "name": "hl7-fhir-udap-common",
+  "version": "1.0.0",
   "description": "UDAP functionality used by both hl7-fhir-udap-server and hl7-fhir-udap-client",
   "main": "udap-common.js",
   "scripts": {
@@ -12,8 +12,14 @@
   },
   "author": "Evernorth/Okta",
   "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
   "bugs": {
-    "url": "https://github.com/Evernorth/hl7-fhir-udap-common"
+    "url": "https://github.com/Evernorth/hl7-fhir-udap-common/issues"
   },
   "homepage": "https://github.com/Evernorth/hl7-fhir-udap-common#readme",
   "dependencies": {
