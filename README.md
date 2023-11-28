@@ -2,7 +2,7 @@
 
 ## Overview
 
-This nodejs library is part of a four-repository collection for a full [UDAP](https://www.udap.org/) implementation. The implementation adheres to published Version 1.0 of the [HL7 UDAP Security Implementation Guide](https://hl7.org/fhir/us/udap-security/). The methods in this library are methods that will be used by both a UDAP Server and a UDAP Client. The methods provide functionality that supports the following: 
+This nodejs library is part of a four-repository collection for a full [UDAP](https://www.udap.org/) implementation. The implementation adheres to published Version 1.0 of the [HL7 UDAP Security Implementation Guide](http://hl7.org/fhir/us/udap-security/STU1//). The methods in this library are methods that will be used by both a UDAP Server and a UDAP Client. The methods provide functionality that supports the following: 
 - UDAP JSON web tokens (JWTs): Creating and verifying
 - Trust community certificates: Parsing for signing keys and Subject Alternative Name (SAN); validating certificate chains; checking the Certificate Revocation List (CRL); and checking for certificate expiration
 
