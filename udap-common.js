@@ -72,8 +72,8 @@ module.exports.verifyUdapJwtCommon = async (udapJwtString, caTrustAnchorObject) 
         //Need to parse first to get cert from header for public key
         var ssJwtParts = udapJwtString.split(".")
         var ssJwtHead = Buffer.from(ssJwtParts[0], 'base64').toString('utf-8')
-        console.log('Token Header')
-        console.log(ssJwtHead)
+        console.debug('Token Header')
+        console.debug(ssJwtHead)
         var objJwtHead = JSON.parse(ssJwtHead)
 
         //get x5c value
@@ -147,8 +147,8 @@ module.exports.generateUdapSignedJwt = (jwtClaims, communityMemberCertAndPrivate
 //cert = certificate object from node-forge library
 module.exports.getAllSansFromCert = (cert) => {
     try {
-        console.log("Loaded public cert- SAN:")
-        console.log(cert.getExtension('subjectAltName').altNames[0].value)
+        console.debug("Loaded public cert- SAN:")
+        console.debug(cert.getExtension('subjectAltName').altNames[0].value)
         return cert.getExtension('subjectAltName').altNames
     }
     catch (e) {
@@ -192,7 +192,7 @@ module.exports.validateSanInCert = (sanValue, cert) => {
         return false
     }
     else {
-        console.log("Found SAN: " + foundSAN[0].value)
+        console.debug("Found SAN: " + foundSAN[0].value)
         return true
     }
 }
@@ -218,13 +218,13 @@ function getCertsAndPrivKeysFromBinary(pkcs12String, password) {
         }
 
         var safeContents = certPkcs12.safeContents[sci]
-        console.log('safeContents ' + (sci + 1))
+        console.debug('safeContents ' + (sci + 1))
         for (var sbi = 0; sbi < safeContents.safeBags.length; ++sbi) {
             var safeBag = safeContents.safeBags[sbi]
-            console.log('safeBag.type: ' + safeBag.type)
+            console.debug('safeBag.type: ' + safeBag.type)
             if (safeBag.attributes.localKeyId) {
                 const localKeyId = forge.util.bytesToHex(safeBag.attributes.localKeyId[0])
-                console.log('localKeyId: ' + localKeyId)
+                console.debug('localKeyId: ' + localKeyId)
 
                 var existingEntry = entries.filter(entry => entry.localKeyId === localKeyId)
                 if (existingEntry.length > 0) {
@@ -232,12 +232,12 @@ function getCertsAndPrivKeysFromBinary(pkcs12String, password) {
                 }
 
                 if (safeBag.type === forge.pki.oids.pkcs8ShroudedKeyBag) {
-                    console.log('found private key')
+                    console.debug('found private key')
                     entry.privateKey = safeBag.key
                     entry.privateKeyPem = pki.privateKeyToPem(safeBag.key)
                 } else if (safeBag.type === forge.pki.oids.certBag) {
                     // this bag has a certificate
-                    console.log('found certificate')
+                    console.debug('found certificate')
                     entry.certChain.push(safeBag.cert)
                 }
                 if (existingEntry.length == 0) {
@@ -295,12 +295,12 @@ async function validateCrl(jwtCertObject, caTrustAnchorObject) {
 
     const ext = caTrustAnchorObject.getExtension('cRLDistributionPoints')
     getDistributionPoints(asn1.fromDer(ext.value))
-    console.log("Distribution Points: ")
-    console.log(distributionPoints)
+    console.debug("Distribution Points: ")
+    console.debug(distributionPoints)
     if (distributionPoints.length > 0) {
         for (var i = 0; i < distributionPoints.length; i++) {
             var crlUrl = distributionPoints[i]
-            console.log("CRL URL: " + crlUrl)
+            console.debug("CRL URL: " + crlUrl)
             try {
                 const httpResponse = await axios.request({
                     'url': crlUrl,
@@ -308,7 +308,7 @@ async function validateCrl(jwtCertObject, caTrustAnchorObject) {
                     'method': 'get',
                     'headers': { 'Accept': 'application/x-x509-ca-cert' }
                 })
-                console.log("CRL Response: ", httpResponse.data.toString())
+                console.debug("CRL Response: ", httpResponse.data.toString())
 
                 const buffer = new Uint8Array(httpResponse.data).buffer
                 const asn1crl = asn1js.fromBER(buffer);
@@ -319,9 +319,9 @@ async function validateCrl(jwtCertObject, caTrustAnchorObject) {
                 for (let index in crl.revokedCertificates) {
                     var revokedCertificate = crl.revokedCertificates[index]
                     var revCertSerial = pvutils.bufferToHexCodes(revokedCertificate.userCertificate.valueBlock.valueHex)
-                    console.log("Cert Serial number: " + revCertSerial)
+                    console.debug("Cert Serial number: " + revCertSerial)
                     if (jwtCertObject.serialNumber.toLowerCase() == revCertSerial.toLowerCase()) {
-                        console.log("Cert on CRL:")
+                        console.debug("Cert on CRL:")
                         throw new Error("certificate revoked")
                     }
                 }
@@ -342,11 +342,11 @@ async function validateCrl(jwtCertObject, caTrustAnchorObject) {
 //It will use the "cert" parameter, and it will determine if it's part of the chain matching the trust anchor designated by "caTrustAnchorObject".
 //It will first fetch the chain at runtime, and then compare against the trust anchor.
 async function validateCertChain(cert, caTrustAnchorObject) {
-    console.log("Inbound Cert to validate: ")
-    console.log(cert)
+    console.debug("Inbound Cert to validate: ")
+    console.debug(cert)
 
-    console.log("Trust Anchor to validate against: ")
-    console.log(caTrustAnchorObject)
+    console.debug("Trust Anchor to validate against: ")
+    console.debug(caTrustAnchorObject)
 
     try {
         const caTrustAnchor = caTrustAnchorObject
@@ -356,7 +356,7 @@ async function validateCertChain(cert, caTrustAnchorObject) {
         const inboundCertChain = await getCertChain(cert)
 
         var chainVerified = pki.verifyCertificateChain(caStore, inboundCertChain)
-        console.log('Certificate chain verified: ', chainVerified)
+        console.debug('Certificate chain verified: ', chainVerified)
     }
     catch (ex) {
         console.error("pki verifyCertificateChain Exception:")
@@ -379,7 +379,7 @@ async function getCertChain(inboundCert) {
             var parentUrl = parent.value.toString().split('\u0002')
             var parsePos = parentUrl[1].indexOf('http')
             var aiaUrl = parentUrl[1].substring(parsePos)
-            console.log("AIA Cert URI: " + aiaUrl)
+            console.debug("AIA Cert URI: " + aiaUrl)
 
             const httpResponse = await axios.request({
                 'url': aiaUrl,
@@ -387,8 +387,8 @@ async function getCertChain(inboundCert) {
                 'method': 'get',
                 'headers': { 'Accept': 'application/x-x509-ca-cert' }
             })
-            console.log("1. HttpResponse  Data:")
-            console.log(httpResponse.data)
+            console.debug("1. HttpResponse  Data:")
+            console.debug(httpResponse.data)
             if (httpResponse.data != null) {
                 var cerDer = forge.util.createBuffer(httpResponse.data, 'raw')
                 var asn1Cert = asn1.fromDer(cerDer)
@@ -405,6 +405,6 @@ async function getCertChain(inboundCert) {
         }
     }
     while (currentCert != null)
-    console.log("2. Finished with chain")
+    console.debug("2. Finished with chain")
     return certChain
 }
