@@ -1,8 +1,12 @@
 # hl7-fhir-udap-common
 
+## Getting Started
+
+For a general overview of UDAP as well as a getting starting guide of the full four-repository collection see [UDAP Documentation](https://github.com/Evernorth/hl7-fhir-udap-docs#readme)
+
 ## Overview
 
-This nodejs library is part of a four-repository collection for a full [UDAP](https://www.udap.org/) implementation. The implementation adheres to published Version 1.0 of the [HL7 UDAP Security Implementation Guide](http://hl7.org/fhir/us/udap-security/STU1//). The methods in this library are methods that will be used by both a UDAP Server and a UDAP Client. The methods provide functionality that supports the following: 
+This nodejs library is part of a four-repository collection for a full [UDAP](https://www.udap.org/) implementation. The implementation adheres to published Version 1.0 of the [HL7 UDAP Security Implementation Guide](http://hl7.org/fhir/us/udap-security/STU1//). The methods in this library are methods that will be used by both a UDAP Server and a UDAP Client. The methods provide functionality that support the following: 
 - UDAP JSON web tokens (JWTs): Creating and verifying
 - Trust community certificates: Parsing for signing keys and Subject Alternative Name (SAN); validating certificate chains; checking the Certificate Revocation List (CRL); and checking for certificate expiration
 
@@ -41,7 +45,7 @@ If you have questions, concerns, bug reports, etc., file an issue in this reposi
 
 ## Getting Involved
 
-See the [CONTRIBUTING.md](CONTRIBUTING.md) file for info on how to get involved.
+See the [CONTRIBUTING](CONTRIBUTING.md) file for info on how to get involved.
 
 ## License
 
