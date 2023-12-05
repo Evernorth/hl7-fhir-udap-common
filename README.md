@@ -39,6 +39,9 @@ To see example code, you can browse the [hl7-fhir-udap-client](https://github.co
 
 The repositories are currently set up for local installation. Placing all four repositories under the same parent folder will allow the package.json local file references to be resolved accurately. This repository will eventually be an npm package.
 
+## Known Issues
+- node-forge is the primary library used for the PKI and X.509 features.  The CRL functionality uses a different set of libraries.  You will find differences in the .getExtension method returns as they are from two different libraries.
+
 ## Getting Help
 
 If you have questions, concerns, bug reports, etc., file an issue in this repository's Issue Tracker.
