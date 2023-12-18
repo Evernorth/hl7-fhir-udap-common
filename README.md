@@ -12,7 +12,7 @@ This nodejs library is part of a four-repository collection for a full [UDAP](ht
 
 Links to the other repositories in the collection:
 - [hl7-fhir-udap-client](https://github.com/Evernorth/hl7-fhir-udap-client#readme)
-- [hl7-fhir-udap-test-client-ui](https://github.com/Evernorth/hl7-fhir-udap-test-client-ui#readme)
+- [hl7-fhir-udap-client-test-ui](https://github.com/Evernorth/hl7-fhir-udap-client-test-ui#readme)
 - [hl7-fhir-udap-server](https://github.com/Evernorth/hl7-fhir-udap-server#readme)
 
 
